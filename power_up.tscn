@@ -1,29 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ktgq7qo01qw"]
+extends Node2D
+class_name PowerUp
 
-[ext_resource type="Script" path="res://Scripts/powerup.gd" id="1_mkoic"]
-[ext_resource type="Script" path="res://Scripts/PickupArea.gd" id="2_h1prs"]
+enum PowerUpType {
+	INDUSTRIAL_BOOST, BERRY_BURST, THUNDER_DASH, ENERGY_SURGE
+}
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vr5ik"]
-radius = 19.026299
+@export var powerup_type: PowerUpType = PowerUpType.INDUSTRIAL_BOOST
+@export var duration: float = 15.0
+@export var icon_texture: Texture2D  # Assign icons here
 
-[node name="PowerUp" type="Node2D"]
-script = ExtResource("1_mkoic")
+@onready var sprite = $PickupArea/Sprite2D
+@onready var timer = $PickupArea/Timer
 
-[node name="PickupArea" type="Area2D" parent="."]
-script = ExtResource("2_h1prs")
+func _ready():
+	# Set icon from exported texture (set in editor)
+	if icon_texture:
+		sprite.texture = icon_texture
+	else:
+		# Fallback colors (if no texture)
+		match powerup_type:
+			PowerUpType.INDUSTRIAL_BOOST: sprite.modulate = Color.YELLOW
+			PowerUpType.BERRY_BURST: sprite.modulate = Color.RED
+			PowerUpType.THUNDER_DASH: sprite.modulate = Color.YELLOW
+			PowerUpType.ENERGY_SURGE: sprite.modulate = Color.ORANGE
+	
+	# Bob animation
+	var tween = create_tween()
+	tween.set_loops()
+	#tween.tween_property(self, "position.y", -8, 1.0).set_trans(Tween.TRANS_SINE)
+	#tween.tween_property(self, "position.y", 0, 1.0).set_trans(Tween.TRANS_SINE)
+	
+	# Connect signals
+	$PickupArea.body_entered.connect(_pickup)
+	timer.timeout.connect(queue_free)
+	timer.start(30)
 
-[node name="Sprite2D" type="Sprite2D" parent="PickupArea"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="PickupArea"]
-modulate = Color(0.4862745, 1, 1, 1)
-shape = SubResource("CircleShape2D_vr5ik")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PickupArea"]
-root_node = NodePath("")
-
-[node name="Timer" type="Timer" parent="PickupArea"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PickupArea"]
-position = Vector2(-31, 40)
-
-[node name="Texture" type="Sprite2D" parent="PickupArea"]
+func _pickup(body):
+	print("zehahah  ", body.get_groups())
+	if body.is_in_group("player"):
+		body.apply_powerup(powerup_type, duration)
+		queue_free()
