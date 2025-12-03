@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyaxma8uvqiww"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_hwvxd"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="2_qh6bi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 28.160255
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
+script = ExtResource("1_hwvxd")
+
+[node name="HappyBoo" parent="." instance=ExtResource("2_qh6bi")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ThunderTimer" type="Timer" parent="."]
+
+[node name="BerryTimer" type="Timer" parent="."]
+
+[node name="EnergyTimer" type="Timer" parent="."]
+
+[node name="IndustrialTimer" type="Timer" parent="."]
