@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://swcb8q32cvqi"]
 
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_y3pti"]
@@ -12,6 +13,38 @@ offset_bottom = 1079.0
 
 [node name="Player" parent="." instance=ExtResource("1_y3pti")]
 position = Vector2(760, 468)
+=======
+[gd_scene load_steps=7 format=3 uid="uid://dun1cpardk2xw"]
+
+[ext_resource type="Script" uid="uid://dsgxioo8wstff" path="res://game.gd" id="1_7jj1j"]
+[ext_resource type="PackedScene" uid="uid://dsw8raqgacxsc" path="res://player.tscn" id="2_a7q7f"]
+[ext_resource type="PackedScene" uid="uid://c2qg1nuvfnd4q" path="res://trees/pine_tree.tscn" id="3_6h7ij"]
+[ext_resource type="Script" uid="uid://qq0ljtwg7jhc" path="res://stopwatch.gd" id="3_edxvn"]
+[ext_resource type="PackedScene" uid="uid://b6ea574qvs1fb" path="res://hud.tscn" id="5_edxvn"]
+
+[sub_resource type="Curve2D" id="Curve2D_cp6e5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1055, -697, 0, 0, 0, 0, 1057, -697, 0, 0, 0, 0, 1057, 671, 0, 0, 0, 0, -1055, 663, 0, 0, 0, 0, -1055, -689)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_7jj1j")
+
+[node name="HUD" parent="." instance=ExtResource("5_edxvn")]
+offset_left = 1258.0
+offset_top = 27.0
+offset_right = 1268.0
+offset_bottom = 37.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StopwatchNode" type="Node" parent="." groups=["stopwatch"]]
+script = ExtResource("3_edxvn")
+
+[node name="Player" parent="." instance=ExtResource("2_a7q7f")]
+position = Vector2(148, 209)
+>>>>>>> Stashed changes
 
 [node name="PineTree" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(347, 891)
@@ -31,8 +64,18 @@ position = Vector2(1763, 642)
 [node name="PineTree6" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(1273, 915)
 
+<<<<<<< Updated upstream
 [node name="PineTree7" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(1631, 948)
+=======
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.521569, 0.760784, 0.776471, 1)
+>>>>>>> Stashed changes
 
 [node name="PineTree8" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(1232, 274)
@@ -43,5 +86,33 @@ position = Vector2(187, 221)
 [node name="PineTree10" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(261, 203)
 
+<<<<<<< Updated upstream
 [node name="PineTree12" parent="." instance=ExtResource("2_l26od")]
 position = Vector2(710, 987)
+=======
+[node name="PineTree4" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(682, 254)
+
+[node name="PineTree5" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(829, 384)
+
+[node name="PineTree11" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(781, -296)
+
+[node name="PineTree6" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(-677, 313)
+
+[node name="PineTree7" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(-788, 370)
+
+[node name="PineTree8" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(-829, 229)
+
+[node name="PineTree9" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(-346, -355)
+
+[node name="PineTree10" parent="." instance=ExtResource("3_6h7ij")]
+position = Vector2(-573, -231)
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+>>>>>>> Stashed changes

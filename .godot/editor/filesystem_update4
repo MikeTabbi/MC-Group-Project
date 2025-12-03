@@ -1,0 +1,11 @@
+res://survivors_game.tscn
+res://hud.gd
+res://mob.tscn
+res://game.gd
+res://mob.gd
+res://bullet_2d.gd
+res://bullet_2d.tscn
+res://player.gd
+res://stopwatch.tscn
+res://stopwatch.gd
+res://hud.tscn
