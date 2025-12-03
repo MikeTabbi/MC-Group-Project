@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0ktgq7qo01qw"]
+
+[ext_resource type="Script" path="res://Scripts/powerup.gd" id="1_mkoic"]
+[ext_resource type="Script" path="res://Scripts/PickupArea.gd" id="2_h1prs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vr5ik"]
+radius = 19.026299
+
+[node name="PowerUp" type="Node2D"]
+script = ExtResource("1_mkoic")
+
+[node name="PickupArea" type="Area2D" parent="."]
+script = ExtResource("2_h1prs")
+
+[node name="Sprite2D" type="Sprite2D" parent="PickupArea"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PickupArea"]
+modulate = Color(0.4862745, 1, 1, 1)
+shape = SubResource("CircleShape2D_vr5ik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PickupArea"]
+root_node = NodePath("")
+
+[node name="Timer" type="Timer" parent="PickupArea"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PickupArea"]
+position = Vector2(-31, 40)
+
+[node name="Texture" type="Sprite2D" parent="PickupArea"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b360fer1esh8a"]
+
+[ext_resource type="PackedScene" path="res://PowerUps/powerup.tscn" id="1_3vtpo"]
+[ext_resource type="Texture2D" path="res://Icons/Industrial Boost.png" id="2_3rjud"]
+
+[node name="Node2D" instance=ExtResource("1_3vtpo")]
+
+[node name="Sprite2D" parent="PickupArea" index="0"]
+position = Vector2(4.7683716e-07, 0.99999976)
+scale = Vector2(0.061889652, 0.054931644)
+texture = ExtResource("2_3rjud")
+
+[node name="CollisionShape2D2" parent="PickupArea" index="1"]
+position = Vector2(0, 2)

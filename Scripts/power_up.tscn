@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjk1538mvwnle"]
+
+[ext_resource type="PackedScene" path="res://PowerUps/powerup.tscn" id="1_ketll"]
+[ext_resource type="Texture2D" path="res://Icons/Thunder Dash.png" id="2_t6vt0"]
+
+[node name="Node2D" instance=ExtResource("1_ketll")]
+
+[node name="Sprite2D" parent="PickupArea" index="0"]
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(0.063232414, 0.043945313)
+texture = ExtResource("2_t6vt0")
